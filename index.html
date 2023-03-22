@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <!-- google icons & fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,0,0" />
+        <!-- css files -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/Normalize.css">
+        <!-- tailwind files -->
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body id="main_container" class="w-[100%] h-full object-cover bg-no-repeat flex max-[950px]:flex-col" style="background-image: url('images/rain.jpg'); background-size: cover;">
+        <!-- left side -->
+        <div class="flex flex-col justify-between flex-1 h-[100vh] py-[50px] px-[100px] max-[767px]:items-center text-white transition-all">
+            <h1 class="font-semibold text-[20px]">Weather.com</h1>
+            <div class="flex items-center gap-[20px] max-[767px]:flex-col">
+                <h1 class="text-[100px] font-semibold"><span id="temp"></span><sup>o</sup></h1>
+                <div class="max-[767px]:flex max-[767px]:flex-col max-[767px]:justify-center">
+                    <h1 id="city" class="text-[50px]"></h1>
+                    <p class="text-center">06:09-Monday,9 Sep '19</p>
+                </div>
+                <div class="min-[767px]:mt-[50px]">
+                    <h1 id="weather_status" class="text-[30px]"></h1>
+                    <img id="weather_photo" src="" alt="" class="max-[767px]:mx-auto">
+                </div>
+            </div>
+        </div>
+        <!-- right side -->
+        <div class="basis-[35%] h-[100vh] bg-[rgba(255,255,255,0.09)] py-[50px] px-[50px] flex flex-col relative gap-[50px] transition-all" style="backdrop-filter: blur(12px);">
+            <input  id="text_input" type="text" class="bg-transparent border-b-[1px] border-b-[solid] border-b-[#788388] py-[10px] text-white w-3/4 font-light outline-none placeholder:text-white placeholder:font-light" placeholder="Another Location">
+            <button id="search" class="absolute top-0 right-0 h-[95px] w-[95px]  bg-[rgba(255,255,255,0.8)]"><span class="material-symbols-outlined text-[40px]">search</span></button>
+            <div class="flex flex-col gap-[40px] text-white font-light">
+                <p id="country" class="cursor-pointer transition-all">Syria</p>
+                <p id="country" class="cursor-pointer transition-all">Jordan</p>
+                <p id="country" class="cursor-pointer transition-all">Lebanon</p>
+                <p id="country" class="cursor-pointer transition-all">Palestine</p>
+            </div>
+            <div class="bg-[#788388] w-full h-[1px]"></div>
+            <div class="flex flex-col gap-[50px] text-white font-light">
+                <h1 class="text-white font-light">Weather Details</h1>
+                <div class="flex flex-col gap-[40px]">
+                <div class="text-white flex items-center justify-between">
+                    <p>Cloudy</p>
+                    <p id="cloud"></p>
+                </div>
+                <div class="text-white flex items-center justify-between">
+                    <p>Humidity</p>
+                    <p id="humidity"></p>
+                </div>
+                <div class="text-white flex items-center justify-between">
+                    <p>Wind</p>
+                    <p id="wind"></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+    <!-- js files -->
+    <script src="dist/index.js"></script>
+</html>
