@@ -20,7 +20,7 @@ const months: string[] = ["January", "February", "March", "April", "May", "June"
 const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 // get user location & set its weather data when open website
-fetch('http://ip-api.com/json')
+fetch('https://ip-api.com/json')
 .then( res => res.json())
 .then(response => {
     get_info(response.city);
