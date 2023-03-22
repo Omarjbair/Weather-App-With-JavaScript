@@ -55,6 +55,7 @@ function get_info(value :string): void{
         wind.textContent = `${data.current.wind_kph}km/h`;
         data.current.temp_c > 25?change_Background("sunny"):data.current.temp_c > 15?change_Background("storm"):change_Background("rain");
     })
+    .catch((error) => console.error(error));
 };
 
 // last country visit 
