@@ -35,7 +35,7 @@ search.addEventListener('click',() : void => {
 
 // Api fetch and get information
 function get_info(value :string): void{
-    fetch(`http://api.weatherapi.com/v1/current.json?key=32a6b6eca54549f89fd105242232103&q=${value}&aqi=no`)
+    fetch(`https://api.weatherapi.com/v1/current.json?key=32a6b6eca54549f89fd105242232103&q=${value}&aqi=no`)
     .then((response) => response.json())
     .then((data) : void => {
         temp.textContent = data.current.temp_c;
