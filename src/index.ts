@@ -28,7 +28,6 @@ fetch('https://ip-api.com/json')
     country_array.push(response.city);
 });
 
-
 // search and get info 
 search.addEventListener('click',() : void => { 
     let value :string = text_input.value;

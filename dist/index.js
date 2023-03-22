@@ -20,7 +20,7 @@ let country_array = ['Palestine', 'lebanon', 'Jordan', 'Syria'];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 // get user location & set its weather data when open website
-fetch('http://ip-api.com/json')
+fetch('https://ip-api.com/json')
     .then(res => res.json())
     .then(response => {
     get_info(response.city);
