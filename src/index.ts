@@ -6,11 +6,19 @@ let cloud = <HTMLParagraphElement> document.getElementById('cloud');
 let humidity = <HTMLParagraphElement> document.getElementById('humidity');
 let city = <HTMLHeadingElement> document.getElementById('city');
 let temp = <HTMLSpanElement> document.getElementById('temp');
+let time = <HTMLSpanElement> document.getElementById('time');
+let month_name = <HTMLSpanElement> document.getElementById('month_name');
+let month_num = <HTMLSpanElement> document.getElementById('month_num');
+let day_num = <HTMLSpanElement> document.getElementById('day_num');
+let day_name = <HTMLSpanElement> document.getElementById('day_name');
 let weather_status = <HTMLHeadingElement> document.getElementById('weather_status');
 let weather_photo = <HTMLImageElement> document.getElementById('weather_photo');
 let main_container = <HTMLBodyElement> document.getElementById('main_container');
 let country = document.querySelectorAll('#country');
 let country_array: string[] = ['Palestine','lebanon','Jordan','Syria'];
+const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 
 // get weather data on jordan when open website
 get_info("jordan");
@@ -20,7 +28,7 @@ search.addEventListener('click',() : void => {
     let value :string = text_input.value;
     if(!(value === "" || value === " ")){
         get_info(value);
-        set_country(value)
+        set_country(value);
         text_input.value = "";
     }
 });
@@ -32,6 +40,14 @@ function get_info(value :string): void{
     .then((data) : void => {
         temp.textContent = data.current.temp_c;
         city.textContent = data.location.name;
+        let times: string[] = data.location.localtime.split(" ");
+        time.textContent = times[1];
+        const d = new Date(times[0]);
+        let date = times[0].split("-");
+        month_name.textContent =  months[d.getMonth()];
+        month_num.textContent = (d.getMonth() + 1).toString();
+        day_num.textContent = date[2];
+        day_name.textContent = days[d.getDay()];
         weather_status.textContent = data.current.condition.text;
         weather_photo.src = data.current.condition.icon;
         cloud.textContent = `${data.current.cloud}%`;
@@ -42,7 +58,7 @@ function get_info(value :string): void{
 };
 
 // last country visit 
-country.forEach((country_weather) : void => {
+country.forEach((country_weather): void => {
     country_weather.addEventListener('click',(): void => {
         get_info(country_weather.innerHTML);
     })
