@@ -20,12 +20,12 @@ const months: string[] = ["January", "February", "March", "April", "May", "June"
 const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 // get user location & set its weather data when open website
-fetch('https://ip-api.com/json')
+fetch('https://geolocation-db.com/json/')
 .then( res => res.json())
 .then(response => {
-    get_info(response.city);
-    country_array.pop();
-    country_array.push(response.city);
+    get_info(response.country_name);
+    set_country(response.country_name);
+
 });
 
 // search and get info 
@@ -83,7 +83,7 @@ function set_country(value: string): void {
 
 // change background image based on weather 
 function change_Background(value: string): void{
-    main_container.style.transition = "1s";
+    main_container.style.transition = ".5s";
     main_container.style.background = `url('images/${value}.jpg')`;
     main_container.style.backgroundSize = "cover";
 }
