@@ -19,8 +19,14 @@ let country = document.querySelectorAll('#country');
 let country_array = ['Palestine', 'lebanon', 'Jordan', 'Syria'];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-// get weather data on jordan when open website
-get_info("jordan");
+// get user location & set its weather data when open website
+fetch('http://ip-api.com/json')
+    .then(res => res.json())
+    .then(response => {
+    get_info(response.city);
+    country_array.pop();
+    country_array.push(response.city);
+});
 // search and get info 
 search.addEventListener('click', () => {
     let value = text_input.value;

@@ -19,9 +19,15 @@ let country_array: string[] = ['Palestine','lebanon','Jordan','Syria'];
 const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+// get user location & set its weather data when open website
+fetch('http://ip-api.com/json')
+.then( res => res.json())
+.then(response => {
+    get_info(response.city);
+    country_array.pop();
+    country_array.push(response.city);
+});
 
-// get weather data on jordan when open website
-get_info("jordan");
 
 // search and get info 
 search.addEventListener('click',() : void => { 
